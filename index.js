@@ -5,6 +5,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 
+
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 });
 
 
+// this is the listening part
 app.listen(port, () => {
     console.log('Listening to port', port);
 })
