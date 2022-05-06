@@ -21,7 +21,7 @@ async function run() {
     try {
         await client.connect();
         const productsCollection = client.db('electroStore').collection('products');
-
+        const ordersCollection = client.db('electroStore').collection('order')
 
         //GET Products
 
@@ -57,6 +57,16 @@ async function run() {
             const result = await productsCollection.deleteOne(query);
             res.send(result);
         });
+
+
+
+        // Order API
+
+        app.post('/order', async(req, res) =>{
+            const order = req.body;
+            const result = await ordersCollection.insertOne(order);
+            res.send(result);
+        })
 
 
 
