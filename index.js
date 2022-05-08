@@ -43,6 +43,7 @@ async function run() {
         const productsCollection = client.db('electroStore').collection('products');
         const ordersCollection = client.db('electroStore').collection('order')
         const reviewsCollection = client.db('electroStore').collection('reviews')
+        const suppliersCollection = client.db('electroStore').collection('suppliers')
 
 
         // Auth
@@ -131,6 +132,16 @@ async function run() {
             const cursor = reviewsCollection.find(query);
             const reviews = await cursor.toArray();
             res.send(reviews);
+        });
+
+
+        // GET Suppliers
+
+        app.get('/suppliers', async (req, res) => {
+            const query = {};
+            const cursor = suppliersCollection.find(query);
+            const suppliers = await cursor.toArray();
+            res.send(suppliers);
         });
 
 
